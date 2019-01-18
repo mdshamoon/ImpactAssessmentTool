@@ -5,8 +5,12 @@
   <div class="alert alert-primary d-none" role="alert" id="success">
  Succesfully added
 </div>
-
+<a href="/second" class="btn btn-primary float-right mr-5">Details page</a>
 <div class="container mt-5">
+
+
+
+
   <div class="row justify-content-center">
     <div class="col-md-4 ">
 <form onsubmit="return submitFunction(event)">
@@ -40,7 +44,6 @@
 </div>
 
 
-<a href="/second" class="btn btn-primary">Details page</a>
 </div>
 <script src="{{asset('js/jquery.min.js')}}"></script>
 
