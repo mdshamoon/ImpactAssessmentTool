@@ -8,7 +8,9 @@
 <a href="/second" class="btn btn-primary float-right mr-5">Details page</a>
 <div class="container mt-5">
 
-
+<div class="spinner-border text-primary d-none" role="status" id="load">
+  <span class="sr-only">Loading...</span>
+</div>
 
 
   <div class="row justify-content-center">

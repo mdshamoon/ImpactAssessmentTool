@@ -6,11 +6,11 @@ function submitonnet()
 {
 console.log(myRecord);
   
-   $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
+//    $.ajaxSetup({
+//   headers: {
+//     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//   }
+// });
   
 var data={
   'mydata': myRecord
@@ -20,12 +20,18 @@ console.log(data);
  $.ajax({
     type: "POST",
     url: '/killer',
+     beforeSend: function()
+    {
+     $('#load').removeClass('d-none');
+   console.log("working");
+    },
    
     data: data,
     success: function () {
       console.log('data sent to server successfully')
 
       $('#success').removeClass('d-none');
+       $('#load').addClass('d-none');
 
       deletedatabase();
       
@@ -37,6 +43,7 @@ console.log(data);
       console.log('not send'+r);
           
        $('#success').removeClass('d-none').html('No Internet connection!!!.. Data saved to local storage');
+        $('#load').addClass('d-none');
      
     }
   });

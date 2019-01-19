@@ -7,6 +7,10 @@
  Succesfully added to the original database
 </div>
 
+<div class="spinner-border text-primary d-none" role="status" id="load">
+  <span class="sr-only">Loading...</span>
+</div>
+
 <button class="btn btn-primary float-right m-3" onclick="submitonnet()">Upload on internet</button>
 
 <div id="note">nn</div>

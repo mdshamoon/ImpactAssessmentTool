@@ -19,21 +19,27 @@ event.preventDefault()
   
   console.log('values,', data);
 
-  $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
+//   $.ajaxSetup({
+//   headers: {
+//     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//   }
+// });
   
  $.ajax({
     type: "POST",
     url: '/kill',
     
     data: data,
+    beforeSend: function()
+    {
+     $('#load').removeClass('d-none');
+   console.log("working");
+    },
     success: function () {
       console.log('data sent to server successfully')
 
       $('#success').removeClass('d-none');
+       $('#load').addClass('d-none');
       $('#Name').val('');
       $('#Age').val('');
       $('#Gender').val('');
@@ -45,6 +51,7 @@ event.preventDefault()
       console.log('not send'+r);
           
        $('#success').removeClass('d-none').html('No Internet connection!!!.. Data saved to local storage');
+        $('#load').addClass('d-none');
       $('#Name').val('');
       $('#Age').val('');
       $('#Gender').val('');
