@@ -1,16 +1,47 @@
 
 var myRecord;
 
+$.ajax({
+    type: "POST",
+    url: '/yo',
+    
+   
+   
+    success: function () {
+      console.log('show details')
+     
+      $('#details').removeClass('d-none');
+     
+       
+
+     
+      
+    },
+    
+
+    error: function(e,r)
+    {
+      console.log('not send'+r);
+
+        $('#details').addClass('d-none');
+          
+      
+     
+    }
+  });
 
 function submitonnet()
 {
 console.log(myRecord);
   
-//    $.ajaxSetup({
+//   $.ajaxSetup({
 //   headers: {
 //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 //   }
 // });
+
+
+
   
 var data={
   'mydata': myRecord
@@ -20,7 +51,7 @@ console.log(data);
  $.ajax({
     type: "POST",
     url: '/killer',
-     beforeSend: function()
+   beforeSend: function()
     {
      $('#load').removeClass('d-none');
    console.log("working");
@@ -42,7 +73,7 @@ console.log(data);
     {
       console.log('not send'+r);
           
-       $('#success').removeClass('d-none').html('No Internet connection!!!.. Data saved to local storage');
+       $('#success').removeClass('d-none').html('No Internet connection!!!.. Could not upload data');
         $('#load').addClass('d-none');
      
     }
@@ -52,7 +83,7 @@ console.log(data);
 
 
 
-var DBOpenRequest = window.indexedDB.open("iat", 1);
+var DBOpenRequest = window.indexedDB.open("iat", 2);
 
 
 
@@ -93,7 +124,7 @@ function getData() {
    
 
      myRecord = objectStoreRequest.result;
-     var html= '<table class="table"> <thead class="thead-dark"> <tr><th scope="col">Name</th><th scope="col">Age</th><th scope="col">Gender</th> </tr></thead><tbody>';
+     var html= '<table class="table"> <thead class="thead-dark"> <tr><th scope="col">Name</th><th scope="col">Age</th><th scope="col">Gender</th> <th scope="col">Options</th>  </tr></thead><tbody>';
   //
 myRecord.forEach(function(element)
 {
@@ -101,6 +132,10 @@ myRecord.forEach(function(element)
       '<td>'+element.name+'</td>'+
       '<td>'+element.age+'</td>'+
       '<td>'+element.gender+'</td>'+
+      '<td><button class="btn btn-success mr-3">Edit</button><button class="btn btn-danger">Delete</button></td>'+
+
+
+
     '</tr>'
 
 

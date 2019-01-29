@@ -11,7 +11,7 @@
   <span class="sr-only">Loading...</span>
 </div>
 
-<button class="btn btn-primary float-right m-3" onclick="submitonnet()">Upload on internet</button>
+<button class="btn btn-primary float-right m-3 d-none" onclick="submitonnet()" id="details">Upload on internet</button>
 
 <div id="note">nn</div>
 
